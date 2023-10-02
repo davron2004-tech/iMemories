@@ -8,25 +8,14 @@
 import SwiftUI
 import SwiftData
 
+
 @main
-struct iMemoriesApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+struct CameraApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PhotosView(isPhotosView: .constant(true))
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: ImageDataModel.self)
     }
 }

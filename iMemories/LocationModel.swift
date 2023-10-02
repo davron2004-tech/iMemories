@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import CoreLocation
 struct LocationModel:Codable{
+    let latitude:Double
+    let longitude:Double
     let countryName:String
     let city:String
 }

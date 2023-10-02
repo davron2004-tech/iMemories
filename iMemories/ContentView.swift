@@ -6,56 +6,33 @@
 //
 
 import SwiftUI
-import SwiftData
+import CoreLocation
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State var isShowingAlert = false
+    @State var isPhotosView = false
+    @Binding var location:CLLocationCoordinate2D?
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+        CameraView(isPhotosView: $isPhotosView,location: location)
+            .onAppear{
+                if(location == nil){
+                    isShowingAlert = true
                 }
-                .onDelete(perform: deleteItems)
+            
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+            .alert("Location services is disabled", isPresented: $isShowingAlert) {
+                Button("OK",role: .cancel){
+                    
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .ignoresSafeArea()
+            
+            
+        .fullScreenCover(isPresented: $isPhotosView){
+            PhotosView(isPhotosView: $isPhotosView)
         }
+        
+        
+        
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
