@@ -15,6 +15,7 @@
 		DD7133832AC2F0E100DC4888 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7133822AC2F0E100DC4888 /* CameraView.swift */; };
 		DD824C2B2ACAC43B00E671C4 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD824C2A2ACAC43B00E671C4 /* LocationModel.swift */; };
 		DD8748B02AC3FB9E00016BE1 /* ImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8748AF2AC3FB9E00016BE1 /* ImageDataModel.swift */; };
+		DD9BCA472AEEE5ED004B9FE6 /* ZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9BCA462AEEE5ED004B9FE6 /* ZoomView.swift */; };
 		DDDE187B2AC943E300401FEC /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDE187A2AC943E300401FEC /* PhotosView.swift */; };
 		DDDE187D2AC9531100401FEC /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDE187C2AC9531100401FEC /* PhotoDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,8 @@
 		DD7133822AC2F0E100DC4888 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		DD824C2A2ACAC43B00E671C4 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		DD8748AF2AC3FB9E00016BE1 /* ImageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataModel.swift; sourceTree = "<group>"; };
+		DD9BCA452AEEE4D1004B9FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DD9BCA462AEEE5ED004B9FE6 /* ZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomView.swift; sourceTree = "<group>"; };
 		DDDE187A2AC943E300401FEC /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
 		DDDE187C2AC9531100401FEC /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,10 +66,12 @@
 		DD7133712AC2EF6400DC4888 /* iMemories */ = {
 			isa = PBXGroup;
 			children = (
+				DD9BCA452AEEE4D1004B9FE6 /* Info.plist */,
 				DD7133722AC2EF6400DC4888 /* iMemoriesApp.swift */,
 				DD3F59E22AC9B8E400A92AD4 /* LocationManager.swift */,
 				DD8748AF2AC3FB9E00016BE1 /* ImageDataModel.swift */,
 				DD824C2A2ACAC43B00E671C4 /* LocationModel.swift */,
+				DD9BCA462AEEE5ED004B9FE6 /* ZoomView.swift */,
 				DD7133742AC2EF6400DC4888 /* ContentView.swift */,
 				DD7133822AC2F0E100DC4888 /* CameraView.swift */,
 				DDDE187A2AC943E300401FEC /* PhotosView.swift */,
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD7133832AC2F0E100DC4888 /* CameraView.swift in Sources */,
+				DD9BCA472AEEE5ED004B9FE6 /* ZoomView.swift in Sources */,
 				DD8748B02AC3FB9E00016BE1 /* ImageDataModel.swift in Sources */,
 				DDDE187D2AC9531100401FEC /* PhotoDetailView.swift in Sources */,
 				DD3F59E32AC9B8E400A92AD4 /* LocationManager.swift in Sources */,
@@ -299,11 +305,12 @@
 				DEVELOPMENT_TEAM = 4RUKJ5BRNZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iMemories/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iMemories;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to get your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,11 +337,12 @@
 				DEVELOPMENT_TEAM = 4RUKJ5BRNZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iMemories/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iMemories;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to get your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

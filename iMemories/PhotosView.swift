@@ -26,7 +26,6 @@ struct PhotosView: View {
         if verticalSizeClass == .regular{
             [GridItem(.flexible()),
                        GridItem(.flexible()),
-                       GridItem(.flexible()),
                        GridItem(.flexible())
         ]
         }
@@ -35,54 +34,60 @@ struct PhotosView: View {
                        GridItem(.flexible()),
                        GridItem(.flexible()),
                        GridItem(.flexible()),
-                       GridItem(.flexible()),
                        GridItem(.flexible())
         ]
         }
     }
     var body: some View {
-
-        
         NavigationView{
-            if (allPhotos.count == 0){
-                VStack{
-                    Text("No Photos")
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                if (allPhotos.count == 0){
+                    VStack{
+                        Text("No Photos")
+                            .font(.title)
+                            .foregroundColor(.secondary)
+                        Text("Press camera icon to add photo")
+                            .font(.title2)
+                            .foregroundColor(.secondary)
+                    }
+                        .toolbar{
+                            ExtractedToolBar(isPhotosView: $isPhotosView, manager: $manager, isFavorite: $isFavorite)
+                        }
+                }
+                else if(favoritePhotos.count == 0 && isFavorite){
+                    Text("No Favorite Photos")
                         .font(.title)
                         .foregroundColor(.secondary)
-                    Text("Press camera icon to add photo")
-                        .font(.title2)
-                        .foregroundColor(.secondary)
+                        .toolbar{
+                            ExtractedToolBar(isPhotosView: $isPhotosView, manager: $manager, isFavorite: $isFavorite)
+                        }
                 }
-                    .toolbar{
-                        ExtractedToolBar(isPhotosView: $isPhotosView, manager: $manager, isFavorite: $isFavorite)
-                    }
-            }
-            else if(favoritePhotos.count == 0 && isFavorite){
-                Text("No Favorite Photos")
-                    .font(.title)
-                    .foregroundColor(.secondary)
-                    .toolbar{
-                        ExtractedToolBar(isPhotosView: $isPhotosView, manager: $manager, isFavorite: $isFavorite)
-                    }
-            }
-            else{
-                ScrollView(.vertical){
-                    LazyVGrid(columns: columns){
-                        ForEach(photos){photo in
-                            NavigationLink{
-                                PhotoDetailView(photo: photo)
-                            }label: {
-                                Image(uiImage: UIImage(data: photo.image)!)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                else{
+                    ScrollView(.vertical){
+                        LazyVGrid(columns: columns){
+                            ForEach(photos){photo in
+                                NavigationLink{
+                                    PhotoDetailView(photo: photo)
+                                }label: {
+                                    Image(uiImage: UIImage(data: photo.image)!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        .shadow(radius: 4, x:4, y:4)
+                                }
                             }
                         }
                     }
-                }
-                .toolbar{
-                    ExtractedToolBar(isPhotosView: $isPhotosView, manager: $manager, isFavorite: $isFavorite)
+                    .padding(.trailing)
+                    .padding(.leading)
+                    .toolbar{
+                        ExtractedToolBar(isPhotosView: $isPhotosView, manager: $manager, isFavorite: $isFavorite)
+                    }
                 }
             }
+            
             
             
             
@@ -90,9 +95,10 @@ struct PhotosView: View {
         .onAppear(){
             manager.checkIfLocationServicesEnabled()
         }
-    
+        .tint(Color("TintColor"))
         
     }
+        
         
 }
 #Preview{

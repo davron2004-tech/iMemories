@@ -37,7 +37,7 @@ final class Coordinator:NSObject, UIImagePickerControllerDelegate, UINavigationC
     }
     
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let image = info[.originalImage] as? UIImage{
             let imageToSave = image.jpeg(.low)!
             let date = Date()
@@ -57,7 +57,7 @@ final class Coordinator:NSObject, UIImagePickerControllerDelegate, UINavigationC
     }
     
     
-    func fetchData(_ location:CLLocationCoordinate2D,_ imageToSave:Data,_ date:Date) {
+    func fetchData(_ location:CLLocationCoordinate2D,_ imageToSave:Data,_ date:Date){
         var urlString:String{ "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=\(location.latitude)&longitude=\(location.longitude)&localityLanguage=en"
         }
         guard let url = URL(string: urlString)else{

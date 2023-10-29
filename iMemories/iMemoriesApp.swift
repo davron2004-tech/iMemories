@@ -16,6 +16,6 @@ struct CameraApp: App {
         WindowGroup {
             PhotosView(isPhotosView: .constant(true))
         }
-        .modelContainer(for: ImageDataModel.self)
+        .modelContainer(for: ImageDataModel.self,isUndoEnabled: true)
     }
 }
